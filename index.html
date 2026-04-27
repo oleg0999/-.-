@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Кадетские вещи - Арсенал Кадета</title>
+    <!-- Шрифты как на военных/кадетских сайтах -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (бесплатные иконки) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f2ea; /* благородный бежевый фон как на kadet777 */
+            color: #2d2f31;
+        }
+
+        /* Цветовая гамма: хаки, золото, темно-зеленый */
+        :root {
+            --army-green: #4a5d23;
+            --dark-green: #2c3e1f;
+            --gold: #c6a43b;
+            --dark-bg: #1e2a1a;
+            --khaki: #978f6c;
+            --light-khaki: #e5e0cf;
+        }
+
+        /* ШАПКА */
+        .top-bar {
+            background: var(--dark-bg);
+            color: white;
+            padding: 8px 0;
+            font-size: 13px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .top-bar span {
+            margin: 0 15px;
+        }
+        .top-bar i {
+            color: var(--gold);
+            margin-right: 5px;
+        }
+
+        .main-header {
+            background: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            border-bottom: 4px solid var(--gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-green);
+        }
+        .logo p {
+            font-size: 12px;
+            color: var(--khaki);
+            letter-spacing: 2px;
+        }
+        .nav-links a {
+            margin: 0 18px;
+            text-decoration: none;
+            font-weight: 600;
+            color: #2c2e30;
+            transition: 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 5px;
+        }
+        .header-icons i {
+            font-size: 22px;
+            margin-left: 20px;
+            color: var(--dark-green);
+            cursor: pointer;
+        }
+
+        /* БАННЕР (герой) */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.pexels.com/photos/918988/pexels-photo-918988.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
+            min-height: 65vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        .hero-content h2 {
+            font-size: 48px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-content p {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+        .btn {
+            background: var(--gold);
+            color: #1e2a1a;
+            padding: 14px 34px;
+            font-weight: bold;
+            border: none;
+            border-radius: 40px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn:hover {
+            background: #b38f2a;
+            transform: scale(1.02);
+        }
+
+        /* Категории */
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            padding: 40px 20px;
+            background: white;
+        }
+        .cat-card {
+            text-align: center;
+            width: 160px;
+        }
+        .cat-card img {
+            width: 100%;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            background: #e9e5d8;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+        }
+        .cat-card p {
+            margin-top: 12px;
+            font-weight: 700;
+            color: var(--dark-green);
+        }
+
+        /* Секция товаров — сетка как в интернет-магазине */
+        .section-title {
+            text-align: center;
+            font-size: 34px;
+            margin: 40px 0 20px;
+            font-family: 'Playfair Display', serif;
+            color: var(--dark-green);
+        }
+        .section-sub {
+            text-align: center;
+            color: #6f6a5c;
+            margin-bottom: 40px;
+        }
+        .products-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
+            padding: 20px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: all 0.2s;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+        .product-img {
+            width: 100%;
+            height: 260px;
+            background: #dcd5c4;
+            object-fit: cover;
+        }
+        .product-card h3 {
+            margin: 18px 0 8px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .price {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--army-green);
+            margin: 8px 0;
+        }
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 14px;
+            margin-left: 8px;
+        }
+        .btn-small {
+            background: var(--dark-green);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 8px;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-small:hover {
+            background: var(--gold);
+            color: #1e2a1a;
+        }
+
+        /* О компании */
+        .about {
+            background: var(--light-khaki);
+            padding: 60px 20px;
+            margin-top: 60px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+        .about-text {
+            flex: 1;
+            min-width: 280px;
+        }
+        .about-text h3 {
+            font-size: 32px;
+            color: var(--dark-green);
+            margin-bottom: 20px;
+        }
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .about-img {
+            flex: 1;
+            background: url('https://images.pexels.com/photos/6383270/pexels-photo-6383270.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover no-repeat;
+            min-height: 280px;
+            border-radius: 20px;
+        }
+
+        /* Подвал */
+        footer {
+            background: #1a2415;
+            color: #cbcbc2;
+            padding: 40px 20px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        .footer-col h4 {
+            color: var(--gold);
+            margin-bottom: 18px;
+        }
+        .footer-col p, .footer-col a {
+            color: #dbd5bf;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            width: 100%;
+            border-top: 1px solid #3a4630;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .main-header { flex-direction: column; gap: 15px; }
+            .nav-links a { margin: 0 10px; }
+            .hero-content h2 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <span><i class="fas fa-truck"></i> Доставка по всей России</span>
+    <span><i class="fas fa-shield-alt"></i> Гарантия качества</span>
+    <span><i class="fas fa-phone-alt"></i> 8-800-555-КАДЕТ</span>
+</div>
+
+<div class="main-header">
+    <div class="logo">
+        <h1>АРСЕНАЛ КАДЕТА</h1>
+        <p>Экипировка для будущих офицеров</p>
+    </div>
+    <div class="nav-links">
+        <a href="#" class="active">Главная</a>
+        <a href="#">Каталог</a>
+        <a href="#">Форма</a>
+        <a href="#">Аксессуары</a>
+        <a href="#">О нас</a>
+        <a href="#">Контакты</a>
+    </div>
+    <div class="header-icons">
+        <i class="fas fa-search"></i>
+        <i class="fas fa-user"></i>
+        <i class="fas fa-shopping-cart"></i>
+    </div>
+</div>
+
+<div class="hero">
+    <div class="hero-content">
+        <h2>Честь. Дисциплина. Качество.</h2>
+        <p>Лучшие кадетские вещи от производителя — как на kadet777.ru</p>
+        <a href="#" class="btn">В каталог</a>
+    </div>
+</div>
+
+<!-- Иконки категорий (повторяем стиль референса) -->
+<div class="categories">
+    <div class="cat-card">
+        <img src="https://images.pexels.com/photos/9820215/pexels-photo-9820215.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="китель">
+        <p>Парадная форма</p>
+    </div>
+    <div class="cat-card">
+        <img src="https://images.pexels.com/photos/7711745/pexels-photo-7711745.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="повседневная">
+        <p>Повседневная</p>
+    </div>
+    <div class="cat-card">
+        <img src="https://images.pexels.com/photos/1583446/pexels-photo-1583446.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="аксессуары">
+        <p>Аксессуары</p>
+    </div>
+    <div class="cat-card">
+        <img src="https://images.pexels.com/photos/3067035/pexels-photo-3067035.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop" alt="обувь">
+        <p>Ботинки/Берцы</p>
+    </div>
+</div>
+
+<h2 class="section-title">🔥 Хиты продаж</h2>
+<p class="section-sub">Кадетская форма, которая выбрана лучшими корпусами</p>
+
+<div class="products-grid">
+    <!-- КАРТОЧКА 1 (замените src на свои фото) -->
+    <div class="product-card">
+        <img class="product-img" src="https://images.pexels.com/photos/10955972/pexels-photo-10955972.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Китель кадетский">
+        <h3>Китель парадный</h3>
+        <p>Шерсть, золотое шитье</p>
+        <div class="price">8 990 ₽ <span class="old-price">11 500 ₽</span></div>
+        <a href="#" class="btn-small">Заказать</a>
+    </div>
+    <div class="product-card">
+        <img class="product-img" src="https://images.pexels.com/photos/10046224/pexels-photo-10046224.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Брюки">
+        <h3>Брюки-галифе</h3>
+        <p>Ткань милитари, стрелки</p>
+        <div class="price">3 490 ₽</div>
+        <a href="#" class="btn-small">Заказать</a>
+    </div>
+    <div class="product-card">
+        <img class="product-img" src="https://images.pexels.com/photos/7711358/pexels-photo-7711358.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Рубашка">
+        <h3>Рубашка хаки</h3>
+        <p>100% хлопок, погоны</p>
+        <div class="price">2 250 ₽</div>
+        <a href="#" class="btn-small">Заказать</a>
+    </div>
+    <div class="product-card">
+        <img class="product-img" src="https://images.pexels.com/photos/1593057/pexels-photo-1593057.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Фуражка">
+        <h3>Фуражка кадетская</h3>
+        <p>С кокардой, размер 54-60</p>
+        <div class="price">1 890 ₽</div>
+        <a href="#" class="btn-small">Заказать</a>
+    </div>
+</div>
+
+<!-- Вторая секция товаров (аксессуары) -->
+<h2 class="section-title">🎖️ Аксессуары офицера</h2>
+<div class="products-grid">
+    <div class="product-card">
+        <img class="product-img" src="https://images.pexels.com/photos/14732004/pexels-photo-14732004.jpeg?auto=compress&cs=tinysrgb&w=600" alt="шеврон">
+        <h3>Шевроны набор</h3>
+        <p>Нашивки на рукав</p>
+        <div class="price">450 ₽</div>
+        <a href="#" class="btn-small">Купить</a>
+    </div>
+    <div class="product-card">
+        <img class="product-img" src="https://images.pexels.com/photos/7907933/pexels-photo-7907933.jpeg?auto=compress&cs=tinysrgb&w=600" alt="ремень">
+        <h3>Ремень парадный</h3>
+        <p>Латунная пряжка</p>
+        <div class="price">1 290 ₽</div>
+        <a href="#" class="btn-small">Заказать</a>
+    </div>
+    <div class="product-card">
+        <img class="product-img" src="https://images.pexels.com/photos/14520923/pexels-photo-14520923.jpeg?auto=compress&cs=tinysrgb&w=600" alt="берет">
+        <h3>Берет зеленый</h3>
+        <p>Элитные войска</p>
+        <div class="price">1 750 ₽</div>
+        <a href="#" class="btn-small">Заказать</a>
+    </div>
+</div>
+
+<!-- Блок О КОМПАНИИ  похож на раздел kadet777 -->
+<div class="about">
+    <div class="about-text">
+        <h3>О магазине «Арсенал Кадета»</h3>
+        <p>Мы — официальные поставщики кадетских корпусов. Работаем с 2005 года, предлагаем форму, соответствующую ГОСТу и лучшим традициям.  Как и на kadet777.ru – у нас только сертифицированные ткани, погоны, шевроны и фурнитура.</p>
+        <p>Индивидуальный пошив, примерка, оптовые скидки для учебных заведений. Быстрая доставка по РФ.</p>
+        <a href="#" class="btn" style="background: var(--dark-green); color: white;">Подробнее</a>
+    </div>
+    <div class="about-img"></div>
+</div>
+
+<footer>
+    <div class="footer-col">
+        <h4>Каталог</h4>
+        <p>Форма парадная</p>
+        <p>Форма полевая</p>
+        <p>Головные уборы</p>
+        <p>Атрибутика</p>
+    </div>
+    <div class="footer-col">
+        <h4>Покупателям</h4>
+        <p>Доставка и оплата</p>
+        <p>Возврат</p>
+        <p>Таблица размеров</p>
+        <p>Опт</p>
+    </div>
+    <div class="footer-col">
+        <h4>Контакты</h4>
+        <p><i class="fas fa-map-marker-alt"></i> Москва, ул. Кадетская 15</p>
+        <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
+        <p><i class="fas fa-envelope"></i> sale@kadetarmor.ru</p>
+        <p><i class="fab fa-whatsapp"></i> WhatsApp: +7-916-000-22-55</p>
+    </div>
+    <div class="copyright">
+        © 2025 Арсенал Кадета — всё для кадетского братства. Дизайн вдохновлен kadet777.ru
+    </div>
+</footer>
+
+</body>
+</html>
