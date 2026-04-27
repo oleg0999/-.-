@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог - Арсенал Кадета</title>
+    <!-- скопируй весь <style> из index.html сюда -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f2ea; /* благородный бежевый фон как на kadet777 */
+            color: #2d2f31;
+        }
+
+        /* Цветовая гамма: хаки, золото, темно-зеленый */
+        :root {
+            --army-green: #4a5d23;
+            --dark-green: #2c3e1f;
+            --gold: #c6a43b;
+            --dark-bg: #1e2a1a;
+            --khaki: #978f6c;
+            --light-khaki: #e5e0cf;
+        }
+
+        /* ШАПКА */
+        .top-bar {
+            background: var(--dark-bg);
+            color: white;
+            padding: 8px 0;
+            font-size: 13px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .top-bar span {
+            margin: 0 15px;
+        }
+        .top-bar i {
+            color: var(--gold);
+            margin-right: 5px;
+        }
+
+        .main-header {
+            background: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            border-bottom: 4px solid var(--gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-green);
+        }
+        .logo p {
+            font-size: 12px;
+            color: var(--khaki);
+            letter-spacing: 2px;
+        }
+        .nav-links a {
+            margin: 0 18px;
+            text-decoration: none;
+            font-weight: 600;
+            color: #2c2e30;
+            transition: 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 5px;
+        }
+        .header-icons i {
+            font-size: 22px;
+            margin-left: 20px;
+            color: var(--dark-green);
+            cursor: pointer;
+        }
+
+        /* БАННЕР (герой) */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.pexels.com/photos/918988/pexels-photo-918988.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
+            min-height: 65vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        .hero-content h2 {
+            font-size: 48px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-content p {
+            font-size: 20px;
+            margin: 20px 0;
+        }
+        .btn {
+            background: var(--gold);
+            color: #1e2a1a;
+            padding: 14px 34px;
+            font-weight: bold;
+            border: none;
+            border-radius: 40px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn:hover {
+            background: #b38f2a;
+            transform: scale(1.02);
+        }
+
+        /* Категории */
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            padding: 40px 20px;
+            background: white;
+        }
+        .cat-card {
+            text-align: center;
+            width: 160px;
+        }
+        .cat-card img {
+            width: 100%;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            background: #e9e5d8;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+        }
+        .cat-card p {
+            margin-top: 12px;
+            font-weight: 700;
+            color: var(--dark-green);
+        }
+
+        /* Секция товаров — сетка как в интернет-магазине */
+        .section-title {
+            text-align: center;
+            font-size: 34px;
+            margin: 40px 0 20px;
+            font-family: 'Playfair Display', serif;
+            color: var(--dark-green);
+        }
+        .section-sub {
+            text-align: center;
+            color: #6f6a5c;
+            margin-bottom: 40px;
+        }
+        .products-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
+            padding: 20px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: all 0.2s;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+        .product-img {
+            width: 100%;
+            height: 260px;
+            background: #dcd5c4;
+            object-fit: cover;
+        }
+        .product-card h3 {
+            margin: 18px 0 8px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .price {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--army-green);
+            margin: 8px 0;
+        }
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 14px;
+            margin-left: 8px;
+        }
+        .btn-small {
+            background: var(--dark-green);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 40px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 8px;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-small:hover {
+            background: var(--gold);
+            color: #1e2a1a;
+        }
+
+        /* О компании */
+        .about {
+            background: var(--light-khaki);
+            padding: 60px 20px;
+            margin-top: 60px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+        .about-text {
+            flex: 1;
+            min-width: 280px;
+        }
+        .about-text h3 {
+            font-size: 32px;
+            color: var(--dark-green);
+            margin-bottom: 20px;
+        }
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .about-img {
+            flex: 1;
+            background: url('https://images.pexels.com/photos/6383270/pexels-photo-6383270.jpeg?auto=compress&cs=tinysrgb&w=600') center/cover no-repeat;
+            min-height: 280px;
+            border-radius: 20px;
+        }
+
+        /* Подвал */
+        footer {
+            background: #1a2415;
+            color: #cbcbc2;
+            padding: 40px 20px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        .footer-col h4 {
+            color: var(--gold);
+            margin-bottom: 18px;
+        }
+        .footer-col p, .footer-col a {
+            color: #dbd5bf;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            width: 100%;
+            border-top: 1px solid #3a4630;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .main-header { flex-direction: column; gap: 15px; }
+            .nav-links a { margin: 0 10px; }
+            .hero-content h2 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Такая же шапка как на главной -->
+<div class="top-bar">...</div>
+<div class="main-header">
+    <!-- Логотип -->
+    <div class="logo">
+        <h1>АРСЕНАЛ КАДЕТА</h1>
+        <p>Экипировка для будущих офицеров</p>
+    </div>
+    <!-- Навигация с активной ссылкой на каталог -->
+    <div class="nav-links">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html" class="active">Каталог</a>  <!-- active подсветит кнопку -->
+        <a href="about.html">О нас</a>
+        <a href="contacts.html">Контакты</a>
+    </div>
+    <div class="header-icons">...</div>
+</div>
+
+<!-- Заголовок страницы каталога -->
+<div style="text-align: center; padding: 60px 20px 20px;">
+    <h1>Полный каталог кадетских вещей</h1>
+    <p>Более 150 товаров для кадетов и суворовцев</p>
+</div>
+
+<!-- Сетка со ВСЕМИ товарами -->
+<div class="products-grid">
+    <!-- Добавь сюда 20-30 карточек товаров -->
+    <div class="product-card">
+        <img class="product-img" src="...">
+        <h3>Китель парадный</h3>
+        <div class="price">8 990 ₽</div>
+        <a href="product.html?id=1" class="btn-small">Подробнее</a>
+    </div>
+    <!-- Еще 19 карточек... -->
+</div>
+
+<footer>...</footer>
+</body>
+</html>
